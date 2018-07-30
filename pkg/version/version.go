@@ -1,13 +1,13 @@
 package version
 
 type Info struct {
-	GitTag string `json:"gitTag"`
-	GitCommit string `json:"gitCommit"`
+	GitTag       string `json:"gitTag"`
+	GitCommit    string `json:"gitCommit"`
 	GitTreeState string `json:"gitTreeState"`
-	BuildDate string `json:"buildDate"`
-	GoVersion string `json:"goVersion"`
-	Compiler string `json:"compiler"`
-	Platform string `json:"platform"`
+	BuildDate    string `json:"buildDate"`
+	GoVersion    string `json:"goVersion"`
+	Compiler     string `json:"compiler"`
+	Platform     string `json:"platform"`
 }
 
 func (info Info) String() string {
@@ -16,12 +16,11 @@ func (info Info) String() string {
 
 func Get() Info {
 	return Info{
-		GitTag: gitTag,
-		GitCommit: gitCommit,
+		GitTag:       gitTag,
+		GitCommit:    gitCommit,
 		GitTreeState: gitTreeState,
-		BuildDate: buildDate,
-		GoVersion: goVersion,
-		Compiler: compiler,
+		BuildDate:    buildDate,
+		GoVersion:    goVersion,
+		Compiler:     compiler,
 	}
 }
-
