@@ -1,5 +1,10 @@
 package version
 
+import (
+	"fmt"
+	"runtime"
+)
+
 type Info struct {
 	GitTag       string `json:"gitTag"`
 	GitCommit    string `json:"gitCommit"`
@@ -20,7 +25,8 @@ func Get() Info {
 		GitCommit:    gitCommit,
 		GitTreeState: gitTreeState,
 		BuildDate:    buildDate,
-		GoVersion:    goVersion,
-		Compiler:     compiler,
+		GoVersion:    runtime.Version(),
+		Compiler:     runtime.Compiler,
+		Platform:     fmt.Sprintf("%s/%s", runtime.GOOS, runtime.GOARCH),
 	}
 }
