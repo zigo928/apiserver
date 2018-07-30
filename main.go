@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"github.com/lexkong/log"
 	"github.com/spf13/viper"
@@ -13,7 +14,6 @@ import (
 	"apiserver/router"
 	"apiserver/router/middleware"
 
-	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/pflag"
@@ -28,13 +28,9 @@ var (
 func main() {
 	pflag.Parse()
 
-	if err := config.Init(*cfg); err != nil {
-		panic(err)
-	}
-
 	if *version {
-		v := v.Get()
-		marshalled, err := json.MarshalIndent(&v, "", "  ")
+		ver := v.Get()
+		marshalled, err := json.MarshalIndent(&ver, "", "  ")
 		if err != nil {
 			fmt.Printf("%v\n", err)
 			os.Exit(1)
@@ -42,6 +38,10 @@ func main() {
 
 		fmt.Println(string(marshalled))
 		return
+	}
+
+	if err := config.Init(*cfg); err != nil {
+		panic(err)
 	}
 
 	// for {
