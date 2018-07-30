@@ -5,6 +5,13 @@ import (
 	"runtime"
 )
 
+var (
+	gitTag       string
+	gitCommit    string
+	gitTreeState string
+	buildDate    string
+)
+
 type Info struct {
 	GitTag       string `json:"gitTag"`
 	GitCommit    string `json:"gitCommit"`
