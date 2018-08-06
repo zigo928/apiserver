@@ -1,2 +1,4 @@
 apiserver
 /.vscode
+/vendor
+log/apiserver.log
